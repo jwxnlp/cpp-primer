@@ -1,0 +1,30 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+          "label": "build",
+          "type": "shell",
+          "command": "g++",
+          "args": [
+              "-g",
+              "${file}",
+              "-std=c++11", 
+              "-o", 
+              "${workspaceFolder}/${fileBasenameNoExtension}",
+              // include path指令
+              // "-I", "/usr/local/cuda-10.0/include",
+              "-I", "/usr/local/include/opencv4",
+
+              // lib 库文件地址
+              // "-L", "/usr/local/cuda-10.0/lib64", "-l", "cudart", "-l", "cublas", "-l", "cudnn", "-l", "curand",
+              "-L", "/usr/local/lib", "-l", "opencv_imgcodecs", "-l", "opencv_core", "-l", "opencv_highgui", "-l", "opencv_imgproc", "-l", "opencv_video"
+            ],
+          "group": {
+            "kind": "build",
+            "isDefault": true
+          }
+        }
+    ]
+}
